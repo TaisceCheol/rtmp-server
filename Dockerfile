@@ -9,7 +9,7 @@ RUN apt-get update && apt-get -y install build-essential libpcre3 libpcre3-dev l
     tar -zxvf nginx-1.7.7.tar.gz && \
     unzip master.zip && \
     cd nginx-1.7.7 && \
-      ./configure --with-http_ssl_module  --with-http_perl_module  --add-module=../nginx-rtmp-module-master && \
+      ./configure --with-http_ssl_module  --add-module=../nginx-rtmp-module-master && \
       make && \
       make install
 

@@ -1,2 +1,4 @@
 rtmp-server:
   image: itmadublin/nginx.rtmp
+  ports:
+    - "1935:1935"
