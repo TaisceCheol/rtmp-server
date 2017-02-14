@@ -1,4 +1,4 @@
-IFS=$'\n';
+# IFS=$'\n';
 
 STREAMING_KEYS=$(printenv | grep streamkey_)
 
