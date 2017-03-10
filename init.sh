@@ -1,8 +1,8 @@
-# IFS=$'\n';
+IFS=$'\n';
 
 STREAMING_KEYS=$(printenv | grep streamkey_)
 
-PUSH_STATEMENTS="# -- LIVESTREAM ENDPOINTS : generated from docker-compose.yml --"
+PUSH_STATEMENTS="\t# -- LIVESTREAM ENDPOINTS : generated from docker-compose.yml --"
 
 for key in ${STREAMING_KEYS[@]}; do
 	stream_name=$(echo $key | awk '{split($0,a,"="); print a[1]}')
@@ -11,7 +11,9 @@ for key in ${STREAMING_KEYS[@]}; do
 	PUSH_STATEMENTS=$PUSH_STATEMENTS$push
 done
 
-awk -v VAR="$PUSH_STATEMENTS" '{gsub("#<-- PUSH -->",VAR,$0)}1' /usr/local/nginx/conf/nginx.conf > tmp.txt
+PUSH_STATEMENTS=$(printf $PUSH_STATEMENTS | awk '{gsub(/&/,"\\\&"); print $0}')
+
+awk -v PUSH="$PUSH_STATEMENTS" '{gsub("##PUSH STATEMENTS##",PUSH,$0);}1' /usr/local/nginx/conf/nginx.conf > tmp.txt
 
 mv tmp.txt /usr/local/nginx/conf/nginx.conf
 

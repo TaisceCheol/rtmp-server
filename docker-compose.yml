@@ -4,6 +4,6 @@ rtmp-server:
     - "1935:1935"
   environment:
     # env var beginning with "streamkey_ will be translated into nginx push commands"
-    - streamkey_youtube=rtmp://a.rtmp.youtube.com/live2/e8u9-z3wa-g0k1-51e5
-
+    - streamkey_youtube=rtmp://a.rtmp.youtube.com/live2/rhda-8c07-xpd8-csu1
+    - streamkey_facebook=rtmp://rtmp-api.facebook.com:80/rtmp/10154521901082569?ds=1&s_l=1&a=ATjwIkkQLHLp4lgk
 

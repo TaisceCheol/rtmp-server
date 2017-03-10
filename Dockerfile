@@ -66,4 +66,3 @@ COPY init.sh /init.sh
 RUN chmod +x /init.sh
 
 CMD ["/bin/bash","init.sh"]
-# CMD ["/usr/local/nginx/sbin/nginx"]
